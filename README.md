@@ -2,8 +2,11 @@
  CyberHero Game Development
 
 Leader:
+
    - M. Afada Nur Saiva Syahira : Game Programmer
+   
 Member:
+
    - Fadel Muhammad   : Game Programmer
    - Kevin            : Game Programmer
    - Teuku Rafli      : Game Artist
