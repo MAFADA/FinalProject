@@ -7,7 +7,7 @@ Leader:
    
 Member:
 
-   - Fadel Muhammad   : Game Programmer
+   - Fadel Muhammad   : Game Artist
    - Kevin            : Game Programmer
    - Teuku Rafli      : Game Artist
    - Tias Ayu Ningrum : Game Artist
