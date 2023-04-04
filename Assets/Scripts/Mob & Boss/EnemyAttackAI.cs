@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class EnemyAttackAI : MonoBehaviour
 {
+    [Header("Enemy Attack Parameter")]
     [SerializeField] private float attackCooldown;
-    [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
     [SerializeField] private int damage;
+    [SerializeField] private float range;
+
+    [Header("Enemy Collider Parameter")]
+    [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
-    [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
+
+    [Header("Enemy Target")]
+    [SerializeField] private LayerMask playerLayer;
 
     //References
     private Animator anim;
     // private Health playerHealth;
+    private EnemyPatrol enemyPatrol;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        enemyPatrol = GetComponentInParent<EnemyPatrol>();
     }
 
     private void Update()
@@ -34,6 +41,10 @@ public class EnemyAttackAI : MonoBehaviour
                 // anim.SetTrigger("meleeAttack");
             }
         }
+
+        if (enemyPatrol != null)
+            enemyPatrol.enabled = !PlayerInSight();
+
     }
 
     private bool PlayerInSight()
