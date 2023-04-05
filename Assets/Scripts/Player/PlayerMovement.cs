@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float groundCheckRadius = 0.8f;
     private float jumpingPower = 16f;
-    private float slopeCheckDistance = 0.5f;
     private bool isFacingRight = true;
 
     private void Update()
