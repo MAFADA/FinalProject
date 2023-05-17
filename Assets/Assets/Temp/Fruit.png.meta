@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7868bcc7482c2884a86d1288ebe6d96a
+guid: ab1fe38bdd706b942abff3587098f8cb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -141,85 +141,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HUD
+      name: apple
       rect:
         serializedVersion: 2
-        x: 8
-        y: 40
-        width: 100
-        height: 32
-      alignment: 9
-      pivot: {x: -0.00037349225, y: 0.9966152}
+        x: 3
+        y: 50
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84e04c019cfe1ec4998830a3ac977fc6
-      internalID: 207352750
+      spriteID: 345f596d7b74700468dadbfbe31e1097
+      internalID: -973519968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Health Point
+      name: orange
       rect:
         serializedVersion: 2
-        x: 120
-        y: 64
-        width: 51
-        height: 4
+        x: 2
+        y: 4
+        width: 11
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b838cc70f20095443b4d7f21db03bd9f
-      internalID: -47164086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Energy Point
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 54
-        width: 51
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6963bd40b0346674a87a8200ccf60ba5
-      internalID: 1140407443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mana Point
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 44
-        width: 51
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0595e2bbb0f29648a52801dbe324895
-      internalID: -160987428
+      spriteID: 9393425a6afa7e24ab21042f3e241285
+      internalID: 1642961498
       vertices: []
       indices: 
       edges: []
@@ -235,11 +193,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Energy Point: 1140407443
-      HUD: 207352750
-      Health Point: -47164086
-      Mana Point: -160987428
-      ui_4: 328554355
+      Fruit_1: -10658898
+      Fruit_10: -271500744
+      Fruit_11: -309707329
+      Fruit_13: -1222674187
+      Fruit_14: -911959467
+      Fruit_15: -1706177269
+      Fruit_2: 1341383105
+      Fruit_3: -246867374
+      Fruit_4: -2094508623
+      Fruit_5: -939303640
+      Fruit_6: 888562574
+      Fruit_7: -363827077
+      Fruit_8: -1699674998
+      Fruit_9: -441384260
+      apple: -973519968
+      orange: 1642961498
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
