@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,12 +9,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private Canvas playerCanvas;
 
     private float horizontal;
     private float speed = 8f;
     private float groundCheckRadius = 0.8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+
+    public bool IsFacingRight { get => isFacingRight; }
 
     private void Update()
     {
@@ -26,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         else if (isFacingRight && horizontal < 0f)
         {
             Flip();
+        }
+
+        if(horizontal == 0f)
+        {
+            animator.SetBool("isRunning", false);
         }
     }
 
@@ -52,11 +63,31 @@ public class PlayerMovement : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
+        
         transform.localScale = localScale;
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+        animator.SetBool("isRunning", true);
+    }
+    public void SizeUp(int duration)
+    {
+        if (IsFacingRight)
+            transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        else
+            transform.localScale = new Vector3(-1.5f, 1.5f, 1f);
+
+        StartCoroutine(WaitForFunction(duration));
+    }
+
+    IEnumerator WaitForFunction(int duration)
+    {
+        yield return new WaitForSeconds(duration);
+        if (IsFacingRight)
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        else
+            transform.localScale = new Vector3(-1f, 1f, 1f);
     }
 }
