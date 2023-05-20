@@ -73,6 +73,7 @@ public class EnemyPatrolAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        float distanceToPlayer = Vector2.Distance(rb.position, target.position);
          distanceToPlayer = Vector2.Distance(rb.position, target.position);
 
         if (distanceToPlayer >= detectionArea)
