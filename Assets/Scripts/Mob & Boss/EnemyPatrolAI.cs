@@ -29,7 +29,6 @@ public class EnemyPatrolAI : MonoBehaviour
     [SerializeField] float distanceToPlayer;
     [SerializeField] Transform target;
     [SerializeField] float speed = 200f;
-    [SerializeField] float speed = 200f;
     [SerializeField] float nextWaypointDistance = 3f;
     [SerializeField] Transform enemyVisual;
     [SerializeField] float detectionArea;
@@ -78,14 +77,11 @@ public class EnemyPatrolAI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
     void FixedUpdate()
     {
         float distanceToPlayer = Vector2.Distance(rb.position, target.position);
-         distanceToPlayer = Vector2.Distance(rb.position, target.position);
+        distanceToPlayer = Vector2.Distance(rb.position, target.position);
 
-        float distanceToPlayer = Vector2.Distance(rb.position, target.position);
 
         if (distanceToPlayer >= detectionArea)
         {
@@ -177,7 +173,7 @@ public class EnemyPatrolAI : MonoBehaviour
         // enemy face direction
         enemy.localScale = new Vector3(-Mathf.Abs(initScale.x) * _direction,
         initScale.y, initScale.z);
-        
+
         //move to the direction
         enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * speedPatrol,
         enemy.position.y, enemy.position.z);
