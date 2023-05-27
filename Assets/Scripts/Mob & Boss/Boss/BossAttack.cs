@@ -15,12 +15,18 @@ public class BossAttack : MonoBehaviour
         pos += transform.right * attackOffset.x;
         pos += transform.right * attackOffset.y;
 
-        Collider2D colInfo = Physics2D.OverlapCircle(pos,attackRange,attackMask);
+        // // pake oncollider 
+        // Collider2D colInfo = Physics2D.OverlapCircle(pos,attackRange,attackMask);
 
-        if (colInfo != null)
-        {
-            colInfo.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
-        }
+        // if (colInfo != null)
+        // {
+        //     colInfo.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+        // }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Player")
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
     }
 
 }
