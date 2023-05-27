@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
+  - Firewall
+  - Virus
+  - Waypoint Down
+  - Waypoint Up
+  - Waypoint Right
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class BossAttack : MonoBehaviour
         pos += transform.right * attackOffset.x;
         pos += transform.right * attackOffset.y;
 
+        // // pake oncollider 
         Collider2D colInfo = Physics2D.OverlapCircle(pos,attackRange,attackMask);
 
         if (colInfo != null)
