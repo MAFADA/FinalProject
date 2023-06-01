@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 2508674139887539405}
   - component: {fileID: 2480149308836962469}
   - component: {fileID: 2460366845797406533}
-  - component: {fileID: 2511364690402810422}
+  - component: {fileID: 2511364690402810423}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2233,7 +2233,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2511364690402810422
+--- !u!114 &2511364690402810423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2511364690402810421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60ffe290ea23b6498bd4ba635fc5bf9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0be91fb71d760454fa19f1e41db5c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -2639,6 +2639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2508674139887539405}
   isFlipped: 0
+  speed: 2.5
 --- !u!114 &4989656902049453327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2652,8 +2653,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 10
-  attackOffset: {x: 1.5, y: 0.35, z: 0}
+  anim: {fileID: 4931241414413967017}
+  attackOffset: {x: 0, y: 0, z: 0}
   attackRange: 1.2
+  player: {fileID: 2508674139887539405}
   attackMask:
     serializedVersion: 2
     m_Bits: 8
