@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa63bc7baa2d6f4b89b0ef1bebdbc82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 6724016874976826242, guid: e6360af08b1a2c0418a51bfe98227add, type: 3}
   itemsToPickUp:
   - {fileID: 11400000, guid: 12fd64c95d5c06d47af6e234576ce091, type: 2}
   - {fileID: 11400000, guid: 0a4dd07100fcfef43870454f69d0c494, type: 2}

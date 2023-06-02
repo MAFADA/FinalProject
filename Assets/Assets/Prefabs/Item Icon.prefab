@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 0a4dd07100fcfef43870454f69d0c494, type: 2}
   count: 1
+  itemDescription: {fileID: 6592039214501375098, guid: 95de928bef1950b4ebe330f3b9cb2b92, type: 3}
   image: {fileID: 4350181433205086383}
   countText: {fileID: 921322992577847137}
   parentAfterDrag: {fileID: 0}
