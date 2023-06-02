@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2462889470956776475}
   - component: {fileID: 7852829793745126793}
   - component: {fileID: 8426374274411872763}
+  - component: {fileID: 6592039214501375098}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -123,10 +124,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7799630796490606059, guid: 4ec8dd899aeab5d44a136110d4b54a60, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 6592039214501375098}
+        m_TargetAssemblyTypeName: ItemDescription, Assembly-CSharp
+        m_MethodName: ViewDescription
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -171,3 +172,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d3544eeba293047a555548e96da56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6592039214501375098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462889470956776469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9228d1d9b90598d4c87cf63e8e334ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: {fileID: 0}

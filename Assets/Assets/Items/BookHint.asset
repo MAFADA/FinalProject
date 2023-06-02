@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: BookHint
   m_EditorClassIdentifier: 
   type: 2
-  actionType: 1
   range: {x: 5, y: 4}
-  stackable: 1
   image: {fileID: 1233927027, guid: 532dce2dbff1a244495a87fd22c4771e, type: 3}
+  itemName: Book of Knowledge
+  itemDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+    urna velit, mollis in lectus ac, tempus dignissim elit. Interdum et malesuada
+    fames ac ante ipsum primis in faucibus. Sed quis dolor vitae felis congue iaculis.
+    Morbi ac tempor justo. Aenean et nibh ut mauris dignissim ultricies nec non enim.
+    Quisque tristique quam placerat libero commodo, ut suscipit metus facilisis.
