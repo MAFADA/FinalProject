@@ -5,7 +5,6 @@ using UnityEngine;
 public class BossAttack : MonoBehaviour
 {
     [SerializeField] float attackDamage = 10;
-
     [SerializeField] Vector3 attackOffset;
     [SerializeField] float attackRange = 1f;
     [SerializeField] LayerMask attackMask;
@@ -13,15 +12,13 @@ public class BossAttack : MonoBehaviour
     public void Attack(){
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x;
-        pos += transform.right * attackOffset.y;
+        pos += transform.up * attackOffset.y;
 
-        // // pake oncollider 
-        Collider2D colInfo = Physics2D.OverlapCircle(pos,attackRange,attackMask);
-
+        Collider2D colInfo = Physics2D.OverlapCircle(point: pos,attackRange,attackMask);
         if (colInfo != null)
         {
-            // colInfo.GetComponent<PlayerHealthBossArena>().TakeDamage(attackDamage);
+            var collider = colInfo.GetComponent<PlayerHealthBossArena>();
+            collider.TakeDamage(attackDamage);
         }
     }
-
 }

@@ -9,6 +9,9 @@ TagManager:
   - Waypoint Down
   - Waypoint Up
   - Waypoint Right
+  - MidBoss1StageTrigger
+  - NextStageTrigger
+  - FallTrigger
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Terrain
+  - Background
   - 
   - 
   - 
@@ -45,4 +48,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3643633805
+    locked: 0
+  - name: Ground
+    uniqueID: 3170226463
+    locked: 0
+  - name: Character
+    uniqueID: 2606720427
     locked: 0
