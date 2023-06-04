@@ -5,8 +5,9 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public int maxStackedItem = 5;
-    
+
     public InventorySlot[] inventorySlots;
+    // private List<InventoryItem> inventoryItems;
 
     public GameObject inventoryItemPrefab;
 
@@ -16,19 +17,22 @@ public class InventoryManager : MonoBehaviour
         {
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if(itemInSlot == null)
+            if (itemInSlot == null)
             {
-                SpawnNewItem(item, slot);
+                // inventoryItems.Add(itemInSlot);
+                itemInSlot = SpawnNewItem(item, slot);
+                slot.AddOnClickListener(itemInSlot.ViewDescription);
                 return true;
             }
         }
         return false;
     }
 
-    private void SpawnNewItem(Item item, InventorySlot slot)
+    private InventoryItem SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
         inventoryItem.InitializeItem(item);
+        return inventoryItem;
     }
 }

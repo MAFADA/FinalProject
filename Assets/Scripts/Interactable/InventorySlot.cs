@@ -1,26 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    public InventoryItem inventoryItem;
+    // public InventoryItem inventoryItem;
+    public Button button;
 
-    public void ViewDescription()
-    {
-        if(inventoryItem.transform.childCount > 0)
-        {
-            Debug.Log("KLIK");
-            inventoryItem = this.GetComponentInChildren<InventoryItem>();
-            inventoryItem.ViewDescription();
-        }
-        else
-        {
-            Debug.Log("Item gak ada");
-        }
+    public void AddOnClickListener(UnityAction action){
+        button.onClick.AddListener(action);
     }
+
+    // public void ViewDescription()
+    // {
+    //     if(transform.childCount > 0)
+    //     {
+    //         Debug.Log("KLIK");
+    //         inventoryItem = this.GetComponentInChildren<InventoryItem>();
+    //         inventoryItem.ViewDescription();
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("Item gak ada");
+    //     }
+    // }
 
     public void OnDrop(PointerEventData eventData)
     {
