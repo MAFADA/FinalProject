@@ -11,22 +11,16 @@ public class EnemyPatrolAI : MonoBehaviour
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
 
-    // [Header("Enemy")]
-    // [Header("Enemy")]
     [SerializeField] private Transform enemy;
-
-    // [Header("Movement Parameter")]
     [SerializeField] private float speedPatrol;
     private Vector3 initScale;
     private bool movingLeft;
-
-    // [Header("Idle Behaviour")]
     [SerializeField] private float idleDuration;
     private float idleTimer;
 
 
     [Header("AI Movement")]
-    [SerializeField] float distanceToPlayer;
+    private float distanceToPlayer;
     [SerializeField] Transform target;
     [SerializeField] float speed = 200f;
     [SerializeField] float nextWaypointDistance = 3f;
@@ -40,6 +34,13 @@ public class EnemyPatrolAI : MonoBehaviour
     private bool endOfPath = false;
     private Seeker seeker;
     private Rigidbody2D rb;
+    public AIState aiState;
+
+    public enum AIState
+    {
+        Patrol,
+        Chase,
+    }
 
 
     private void Awake()
@@ -53,10 +54,9 @@ public class EnemyPatrolAI : MonoBehaviour
         // seeker for pathfinding
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        rb = GetComponent<Rigidbody2D>();
 
         // repeat calling function UpdatePath
-        InvokeRepeating("UpdatePath", 0f, 0.5f);
+        InvokeRepeating(methodName: "UpdatePath", 0f, 0.5f);
     }
 
     void UpdatePath()
@@ -79,83 +79,104 @@ public class EnemyPatrolAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        float distanceToPlayer = Vector2.Distance(rb.position, target.position);
-        distanceToPlayer = Vector2.Distance(rb.position, target.position);
-
-
-        if (distanceToPlayer >= detectionArea)
+        switch (aiState)
         {
-            if (movingLeft)
-            {
-                if (enemy.position.x >= leftEdge.position.x)
+            case AIState.Patrol:
+
+                distanceToPlayer = Vector2.Distance(rb.position, target.position);
+
+                if (distanceToPlayer >= detectionArea)
                 {
-                    MoveInDirection(-1);
+                    if (movingLeft)
+                    {
+                        if (enemy.position.x >= leftEdge.position.x)
+                        {
+                            MoveInDirection(-1);
+                        }
+                        else
+                        {
+                            DirectionChange();
+                        }
+
+                    }
+                    else
+                    {
+                        if (enemy.position.x <= rightEdge.position.x)
+                        {
+                            MoveInDirection(1);
+                        }
+                        else
+                        {
+                            DirectionChange();
+                        }
+                    }
+                }
+
+                if (path == null)
+                {
+                    return;
+                }
+
+                if (currentWaypoint >= path.vectorPath.Count)
+                {
+                    endOfPath = true;
+                    return;
                 }
                 else
                 {
-                    DirectionChange();
+                    endOfPath = false;
                 }
 
-            }
-            else
-            {
-                if (enemy.position.x <= rightEdge.position.x)
+                if (distanceToPlayer <= detectionArea)
                 {
-                    MoveInDirection(1);
+                    aiState = AIState.Chase;
                 }
-                else
+
+                break;
+
+            case AIState.Chase:
+
+                // jarak rigidbody terhadap satu point dalam waypoint 
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+                if (distance < nextWaypointDistance)
                 {
-                    DirectionChange();
+                    currentWaypoint++;
                 }
-            }
+                //Calculating the waypoint to target
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                Vector2 force = direction * speed * Time.deltaTime;
+
+                if (distanceToPlayer <= detectionArea)
+                {
+                    //move the enemy to target
+                    rb.AddForce(force);
+                }
+
+                if (rb.velocity.x >= 0.01f)
+                {
+                    enemyVisual.localScale = new Vector3(-1f, 1f, 1f);
+                }
+                else if (rb.velocity.x <= -0.01f)
+                {
+                    enemyVisual.localScale = new Vector3(1f, 1f, 1f);
+                }
+
+                distanceToPlayer = Vector2.Distance(rb.position, target.position);
+                if (distanceToPlayer > detectionArea)
+                {
+                    aiState = AIState.Patrol;
+                }
+                break;
+
+
         }
 
-        if (path == null)
-        {
-            return;
-        }
-
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            endOfPath = true;
-            return;
-        }
-        else
-        {
-            endOfPath = false;
-        }
-
-        //Calculating the waypoint to target
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-
-        if (distanceToPlayer <= detectionArea)
-        {
-            //move the enemy to target
-            rb.AddForce(force);
-        }
-
-        // jarak rigidbody terhadap satu point dalam waypoint 
-        // jarak rigidbody terhadap satu point dalam waypoint 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
-
-        if (rb.velocity.x >= 0.01f)
-        {
-            enemyVisual.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else if (rb.velocity.x <= -0.01f)
-        {
-            enemyVisual.localScale = new Vector3(1f, 1f, 1f);
-        }
     }
+
     private void DirectionChange()
     {
-        animator.SetBool("isRunning", false);
+        // animator.SetBool("isRunning", false);
 
         idleTimer += Time.deltaTime;
 
@@ -168,7 +189,7 @@ public class EnemyPatrolAI : MonoBehaviour
     private void MoveInDirection(int _direction)
     {
         idleTimer = 0;
-        animator.SetBool("isRunning", true);
+        // animator.SetBool("isRunning", true);
 
         // enemy face direction
         enemy.localScale = new Vector3(-Mathf.Abs(initScale.x) * _direction,
@@ -177,5 +198,11 @@ public class EnemyPatrolAI : MonoBehaviour
         //move to the direction
         enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * speedPatrol,
         enemy.position.y, enemy.position.z);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionArea);
     }
 }

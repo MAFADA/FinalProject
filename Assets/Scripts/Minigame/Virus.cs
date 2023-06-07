@@ -7,11 +7,12 @@ public class Virus : MonoBehaviour
 {
     [SerializeField] float health = 100f;
     [SerializeField] float attackDamage = 5f;
+    [SerializeField] float serverAttackDamage = 50f;
     [SerializeField, Range(0, 10)] float speed = 5;
     Wayponts waypoints;
     Vector2 initialPosition;
     float distanceLimit = float.MaxValue;
-    public Transform target;
+    private Transform target;
     private int waypointsIndex = 0;
 
     public void SetWaypoint(Wayponts waypoints)
@@ -20,17 +21,10 @@ public class Virus : MonoBehaviour
         target = waypoints.points[0];
     }
 
-    private void Start()
-    {
-        // initialPosition = this.transform.position;
-
-    }
-
     private void Update()
     {
         var virusYPos = transform.position.y;
         var freezeYPos = virusYPos * 0;
-        // transform.Translate(Vector2.right * speed * Time.deltaTime);
         Vector3 dir = target.position - this.transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
@@ -46,24 +40,6 @@ public class Virus : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Waypoint Down"))
-    //     {
-    //         transform.Translate(Vector2.down * speed * Time.deltaTime);
-    //     }
-    //     else if (other.CompareTag("Waypoint Up"))
-    //     {
-    //         transform.Translate(Vector2.up * speed * Time.deltaTime);
-    //     }
-    //     else if (other.CompareTag("Waypoint Right"))
-    //     {
-    //         transform.Translate(Vector2.right * speed * Time.deltaTime);
-    //     }
-
-
-    // }
 
     private void GetNextWaypoint()
     {
@@ -82,6 +58,11 @@ public class Virus : MonoBehaviour
         if (other.gameObject.tag == "Firewall")
         {
             other.gameObject.GetComponent<FirewallHealth>().TakeDamage(attackDamage);
+        }
+
+        if (other.gameObject.tag == "Server")
+        {
+            other.gameObject.GetComponent<ServerHealth>().TakeDamage(serverAttackDamage);
         }
     }
 
