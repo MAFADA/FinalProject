@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
+
+    [SerializeField] private Image attackBuff;
 
     [SerializeField] private Canvas playerCanvas;
 
@@ -79,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         else
             transform.localScale = new Vector3(-1.5f, 1.5f, 1f);
 
+        attackBuff.gameObject.SetActive(true);
+
         StartCoroutine(WaitForFunction(duration));
     }
 
@@ -89,5 +94,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f);
         else
             transform.localScale = new Vector3(-1f, 1f, 1f);
+
+        attackBuff.gameObject.SetActive(false);
     }
 }
