@@ -18,7 +18,7 @@ public class FirewallHealth : MonoBehaviour
 
     private void Update()
     {
-        if (health < 0)
+        if (health <= 0)
             Destroy(this.gameObject);
 
         healthBar.fillAmount = health / 100f;

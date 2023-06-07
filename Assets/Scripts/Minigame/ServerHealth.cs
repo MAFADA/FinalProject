@@ -21,10 +21,17 @@ public class ServerHealth : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+
+            Destroy(this.gameObject);
+            GameOver();
+        }
+
         healhtBar.fillAmount = health / 100;
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         healhtBar.fillAmount = health / 100;
@@ -38,26 +45,18 @@ public class ServerHealth : MonoBehaviour
         }
     }
 
-    // private void Update()
-    // {
-    //     if (health < 0)
-    //         Destroy(this.gameObject);
-    // }
-
     public void GameOver()
     {
-        if (health < 0)
-            Destroy(this.gameObject);
+        isGameOver = true;
         finishedCanvas.gameObject.SetActive(true);
         finishedText.text = "Game Over!!!";
-        isGameOver = true;
+        if (finishedCanvas.isActiveAndEnabled)
+        {
+            Time.timeScale = 0f;
+        }
     }
 
-    public void PlayerWin()
-    {
-        finishedCanvas.gameObject.SetActive(true);
-        finishedText.text = "You Win!!!";
-    }
+  
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerHealthBossArena : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerHealthBossArena : MonoBehaviour
     [SerializeField] TMP_Text gameOverText;
     public UnityEvent OnDie;
     public UnityEvent OnFallFromBelowGround;
+    public UnityEvent OnBossStageEnter;
     
 
     public void TakeDamage(float damage)
@@ -38,7 +40,7 @@ public class PlayerHealthBossArena : MonoBehaviour
 
         if (other.CompareTag("MidBoss1StageTrigger"))
         {
-            FindAnyObjectByType<Boss>().GetComponent<Animator>().enabled = true;
+            OnBossStageEnter.Invoke();
         }
     }
 

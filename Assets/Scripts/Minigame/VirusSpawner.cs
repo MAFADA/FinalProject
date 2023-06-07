@@ -33,8 +33,6 @@ public class VirusSpawner : MonoBehaviour
                 virusSpawnPos,
                 virusRotation);
             virus.SetWaypoint(waypointsSpawner);
-            // virus.target = waypointsSpawner.points[0];
-
             virus.SetUpDistanceLimit(30);
 
             return;

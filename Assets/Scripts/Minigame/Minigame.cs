@@ -22,6 +22,10 @@ public class Minigame : MonoBehaviour
     [SerializeField] private TMP_Text factText;
     [SerializeField] private TMP_Text factFalseText;
 
+    [Header(header: "UI Finished")]
+    [SerializeField] Canvas finishedCanvas;
+    [SerializeField] TMP_Text finishedText;
+
     private Question currentQuestion;
     private Question currentFalseQuestion;
     private string buttonName;
@@ -34,34 +38,36 @@ public class Minigame : MonoBehaviour
     [Header("Firewall")]
     [SerializeField] List<FirewallHealth> firewall = new List<FirewallHealth>();
     [SerializeField] List<GameObject> firewallButton = new List<GameObject>();
-    StateFirewall1 stateFirewall1;
-    StateFirewall2 stateFirewall2;
-    StateFirewall3 stateFirewall3;
+    public StateFirewall1 stateFirewall1;
+    public StateFirewall2 stateFirewall2;
+    public StateFirewall3 stateFirewall3;
 
     private int firewall1AnsweredQuestionCount;
     private int firewall2AnsweredQuestionCount;
     private int firewall3AnsweredQuestionCount;
+    private int answeredQuestion = 0;
 
-    enum StateFirewall1
+    public enum StateFirewall1
     {
         Phase0,
         Phase1,
         Phase2,
         Phase3
     }
-    enum StateFirewall2
+    public enum StateFirewall2
     {
         Phase0,
         Phase1,
         Phase2,
         Phase3
     }
-    enum StateFirewall3
+    public enum StateFirewall3
     {
         Phase0,
         Phase1,
         Phase2,
-        Phase3
+        Phase3,
+        PhaseWin
     }
 
     private void Update()
@@ -90,8 +96,11 @@ public class Minigame : MonoBehaviour
                 break;
 
             case StateFirewall1.Phase3:
-                firewall[0].GetComponent<FirewallHealth>().enabled = false;
-                firewallButton[0].gameObject.SetActive(false);
+                if (firewall1AnsweredQuestionCount == 3)
+                {
+                    firewall[0].GetComponent<FirewallHealth>().enabled = false;
+                    firewallButton[0].gameObject.SetActive(false);
+                }
                 break;
         }
 
@@ -119,8 +128,11 @@ public class Minigame : MonoBehaviour
                 break;
 
             case StateFirewall2.Phase3:
-                firewall[1].GetComponent<FirewallHealth>().enabled = false;
-                firewallButton[1].gameObject.SetActive(false);
+                if (firewall2AnsweredQuestionCount == 3)
+                {
+                    firewall[1].GetComponent<FirewallHealth>().enabled = false;
+                    firewallButton[1].gameObject.SetActive(false);
+                }
                 break;
         }
 
@@ -143,14 +155,26 @@ public class Minigame : MonoBehaviour
             case StateFirewall3.Phase2:
                 if (firewall3AnsweredQuestionCount == 2)
                 {
+
                     stateFirewall3 = StateFirewall3.Phase3;
                 }
                 break;
 
             case StateFirewall3.Phase3:
+                if (firewall3AnsweredQuestionCount == 3)
+                {
+                Debug.Log(firewall3AnsweredQuestionCount);
                 firewall[2].GetComponent<FirewallHealth>().enabled = false;
                 firewallButton[2].gameObject.SetActive(false);
+                // stateFirewall3 = StateFirewall3.PhaseWin;
+                }
                 break;
+
+        }
+
+        if (firewall1AnsweredQuestionCount == 3&& firewall2AnsweredQuestionCount==3&& firewall3AnsweredQuestionCount==3)
+        {
+            PlayerWin();
         }
     }
 
@@ -168,17 +192,6 @@ public class Minigame : MonoBehaviour
     private void OnDisable()
     {
         SetCurrentQuestion();
-
-        //     if (isTimerRunning)
-        //     {
-        //         if (timer > 0)
-        //         {
-        //             timer -= Time.deltaTime;
-        //         }else{
-        //             questionCanvas.gameObject.SetActive(false);
-        //         }
-        //     }
-
     }
 
     public void OnClicked(Button button)
@@ -193,6 +206,7 @@ public class Minigame : MonoBehaviour
         currentQuestion = unAnsweredQuestionsList[randomQuestionIndex];
         currentFalseQuestion = unAnsweredFalseQuestionsList[randomQuestionIndex];
 
+
         factText.text = currentQuestion.fact;
         factFalseText.text = currentFalseQuestion.fact;
 
@@ -201,10 +215,11 @@ public class Minigame : MonoBehaviour
 
     IEnumerator TransitionToNextQuestion()
     {
+
+        questionCanvas.gameObject.SetActive(false);
         unAnsweredQuestionsList.Remove(currentQuestion);
         unAnsweredFalseQuestionsList.Remove(currentFalseQuestion);
-        questionCanvas.gameObject.SetActive(false);
-        this.gameObject.SetActive(false);
+        // this.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(.1f);
 
@@ -234,12 +249,10 @@ public class Minigame : MonoBehaviour
                     break;
             }
             StartCoroutine(TransitionToNextQuestion());
+
+
             // isTimerRunning = true;
         }
-        // else if(!currentFalseQuestion.isTrue)
-        // {
-        //     Debug.Log("Wrong!");
-        // }
     }
 
     public void UserSelectFalse()
@@ -249,9 +262,21 @@ public class Minigame : MonoBehaviour
             Debug.Log("False!");
             // isTimerRunning = true;
         }
-        // else
-        // {
-        //     Debug.Log("Wrong!");
-        // }
+    }
+    public void PlayerWin()
+    {
+        finishedCanvas.gameObject.SetActive(true);
+        finishedText.text = "You Win!!!";
+        if (finishedCanvas.isActiveAndEnabled)
+        {
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void Retry()
+    {
+        string name = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex).name;
+        SceneManager.LoadScene(name);
+        Time.timeScale = 1f;
     }
 }
