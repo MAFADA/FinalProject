@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] TMP_Text nameText;
     [SerializeField] TMP_Text dialogueText;
+    public UnityEvent OnDialogueEnd;
 
     private Queue<string> sentences;
 
@@ -22,7 +25,7 @@ public class DialogueManager : MonoBehaviour
 
         foreach (string sentece in dialogue.sentences)
         {
-            sentences.Enqueue(sentece);
+            sentences.Enqueue(item: sentece);
         }
 
         DisplayNextSentences();
@@ -52,6 +55,6 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        Debug.Log("End Dialogue");
+        OnDialogueEnd.Invoke();
     }
 }
