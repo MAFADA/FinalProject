@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidBossBulletAttack : MonoBehaviour
+public class BulletAttack : MonoBehaviour
 {
     [Header("Shoot Attack")]
     
@@ -45,21 +45,6 @@ public class MidBossBulletAttack : MonoBehaviour
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
-
-    // public void Attack()
-    // {
-    //     Vector3 pos = transform.position;
-    //     pos += transform.right * attackOffset.x;
-    //     pos += transform.up * attackOffset.y;
-
-    //     colInfo = Physics2D.OverlapCircle(point: pos, attackRange, attackMask);
-    //     if (colInfo != null)
-    //     {
-    //         var collider = colInfo.GetComponent<PlayerHealthBossArena>();
-    //         collider.TakeDamage(attackDamage);
-    //     }
-    // }
-
 
     private void OnDrawGizmos()
     {
