@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] string nextSceneName;
+    public PlayableDirector playableDirector;
+    private void Start()
     {
-        FindObjectOfType<DialogueTrigger>().TriggerDialogue();
+        playableDirector.stopped += OnCutsceneFinished;
+        // Subscribe to the cutscene finish event or animation event that indicates the end of the cutscene
+        // Example: cutsceneTimeline.onFinished += LoadNextScene;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCutsceneFinished(PlayableDirector director)
     {
-        
+        // Load the next scene using the SceneManager
+        SceneManager.LoadScene(nextSceneName);
     }
 }
