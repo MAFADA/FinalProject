@@ -10,10 +10,10 @@ public class MidBossMeleeAttack : MonoBehaviour
     [SerializeField] float attackRange = 1f;
     [SerializeField] LayerMask attackMask;
 
-    [Header("Jump Attack")]
-    public float jumpForce = 10f;
-    public float cooldownTime = 3f;
-    public float jumpAttackRange = 5f;
+    // [Header("Jump Attack")]
+    // public float jumpForce = 10f;
+    // public float cooldownTime = 3f;
+    // public float jumpAttackRange = 5f;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -29,35 +29,35 @@ public class MidBossMeleeAttack : MonoBehaviour
 
     private void Update()
     {
-        if (isJumping) return;
+        // if (isJumping) return;
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        // float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distanceToPlayer <= attackRange)
-        {
-            cooldownTimer -= Time.deltaTime;
+        // if (distanceToPlayer <= attackRange)
+        // {
+        //     cooldownTimer -= Time.deltaTime;
 
-            if (cooldownTimer <= 0f)
-            {
-                Jump();
-                cooldownTimer = cooldownTime;
-            }
-        }
+        //     if (cooldownTimer <= 0f)
+        //     {
+        //         Jump();
+        //         cooldownTimer = cooldownTime;
+        //     }
+        // }
     }
 
-    public void Jump()
-    {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        isJumping = true;
-    }
+    // public void Jump()
+    // {
+    //     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    //     isJumping = true;
+    // }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-        }
-    }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Ground"))
+    //     {
+    //         isJumping = false;
+    //     }
+    // }
 
     public void Attack()
     {
