@@ -12,6 +12,7 @@ public class PlayerHealthBossArena : MonoBehaviour
     public UnityEvent OnDie;
     public UnityEvent OnFallFromBelowGround;
     public UnityEvent OnBossStageEnter;
+    public UnityEvent<GameObject> OnHit;
     
 
     public void TakeDamage(float damage)
@@ -24,6 +25,7 @@ public class PlayerHealthBossArena : MonoBehaviour
             Destroy(this.gameObject);
             OnDie.Invoke();
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
