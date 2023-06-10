@@ -6,7 +6,7 @@ public class ExplosiveEnemy : MonoBehaviour
 {
     [SerializeField] float explosionRadius = 3f;
     [SerializeField] int damageAmount = 1;
-    [SerializeField] GameObject explosionEffect;
+    // [SerializeField] GameObject explosionEffect;
     [SerializeField] Animator animator;
 
     private bool exploded = false;
@@ -31,7 +31,7 @@ public class ExplosiveEnemy : MonoBehaviour
         animator.SetTrigger("Explode");
 
         // Spawn explosion effect
-        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        // Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
         // Apply explosion force to nearby objects
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
@@ -46,5 +46,11 @@ public class ExplosiveEnemy : MonoBehaviour
 
         // Destroy the explosive enemy
         Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
