@@ -8,6 +8,9 @@ public class CutsceneManager : MonoBehaviour
 {
     [SerializeField] string nextSceneName;
     public PlayableDirector playableDirector;
+    [SerializeField] Animator transition;
+    [SerializeField] float transitionTime = 1f;
+
     private void Start()
     {
         playableDirector.stopped += OnCutsceneFinished;
@@ -18,6 +21,17 @@ public class CutsceneManager : MonoBehaviour
     private void OnCutsceneFinished(PlayableDirector director)
     {
         // Load the next scene using the SceneManager
-        SceneManager.LoadScene(nextSceneName);
+        // SceneManager.LoadScene(nextSceneName);
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
+
+    IEnumerator LoadScene(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(levelIndex);
+    }
+
 }

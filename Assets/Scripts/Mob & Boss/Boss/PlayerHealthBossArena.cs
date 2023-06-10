@@ -34,12 +34,6 @@ public class PlayerHealthBossArena : MonoBehaviour
             gameOverText.text = "Kamu jatuh ke lubang void!!!\n Berhati-hati lah";
             OnFallFromBelowGround.Invoke();
         }
-
-        if (other.CompareTag("NextStageTrigger"))
-        {
-            
-        }
-
         if (other.CompareTag("MidBoss1StageTrigger"))
         {
             OnBossStageEnter.Invoke();
