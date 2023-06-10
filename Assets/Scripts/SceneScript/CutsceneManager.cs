@@ -14,13 +14,10 @@ public class CutsceneManager : MonoBehaviour
     private void Start()
     {
         playableDirector.stopped += OnCutsceneFinished;
-        // Subscribe to the cutscene finish event or animation event that indicates the end of the cutscene
-        // Example: cutsceneTimeline.onFinished += LoadNextScene;
     }
 
     private void OnCutsceneFinished(PlayableDirector director)
     {
-        // Load the next scene using the SceneManager
         // SceneManager.LoadScene(nextSceneName);
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }

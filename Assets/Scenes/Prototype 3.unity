@@ -15465,7 +15465,7 @@ GameObject:
   - component: {fileID: 852634581}
   m_Layer: 3
   m_Name: Player Visual
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16839,7 +16839,7 @@ GameObject:
   - component: {fileID: 1665861633}
   m_Layer: 3
   m_Name: Player Canvas
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17137,7 +17137,7 @@ GameObject:
   - component: {fileID: 2013861590}
   m_Layer: 3
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

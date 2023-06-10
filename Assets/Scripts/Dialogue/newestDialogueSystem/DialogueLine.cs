@@ -22,10 +22,13 @@ public class DialogueLine : DialogueBase
     [Header("Character Image")]
     [SerializeField] private Sprite characterSprite;
     [SerializeField] private Image imageHolder;
+    [SerializeField] private string charcaterName;
+    [SerializeField] private TMP_Text charcaterText;
     private void Awake()
     {
         textHolder = GetComponent<TMP_Text>();
         textHolder.text = "";
+        charcaterText.text = "";
 
         imageHolder.sprite = characterSprite;
         imageHolder.preserveAspect = true;
@@ -34,10 +37,12 @@ public class DialogueLine : DialogueBase
     private void Start()
     {
         StartCoroutine(WriteText(input,
+                               charcaterName ,
                                  textHolder,
+                                 charcaterText,
                                  textColor,
                                  textSpeed,
-                                //  sound,
+                                 //  sound,
                                  textDelayBetweenLines));
     }
 }
