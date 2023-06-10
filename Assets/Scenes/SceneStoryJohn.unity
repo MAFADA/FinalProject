@@ -897,6 +897,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5256655266601989333, guid: 01dd410e41a5fd949afd3c977b104cd4, type: 3}
   m_PrefabInstance: {fileID: 162733517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &178916445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178916446}
+  m_Layer: 0
+  m_Name: Attack Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178916446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178916445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 578464152}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &183138757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2227,7 +2258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 427685396}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2733,6 +2764,7 @@ GameObject:
   - component: {fileID: 578464154}
   - component: {fileID: 578464155}
   - component: {fileID: 578464160}
+  - component: {fileID: 578464162}
   - component: {fileID: 578464161}
   m_Layer: 0
   m_Name: Player
@@ -2756,6 +2788,7 @@ Transform:
   - {fileID: 1221176692}
   - {fileID: 1430154983}
   - {fileID: 1787954169}
+  - {fileID: 178916446}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2970,6 +3003,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &578464162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578464151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b144d5013d79c044a38107194b963aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1221176696}
+  attackPoint: {fileID: 178916446}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  attackDamage: 40
 --- !u!1 &591846439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,7 +3686,8 @@ GameObject:
   - component: {fileID: 727009332}
   - component: {fileID: 727009333}
   - component: {fileID: 727009334}
-  m_Layer: 0
+  - component: {fileID: 727009335}
+  m_Layer: 7
   m_Name: EnemyVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3755,6 +3808,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &727009335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727009328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8bf95b70f1a844c8e4497cd3aed5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  maxHealth: 100
 --- !u!1 &743936709
 GameObject:
   m_ObjectHideFlags: 0
@@ -5785,7 +5852,7 @@ GameObject:
   - component: {fileID: 1143328582}
   - component: {fileID: 1143328586}
   - component: {fileID: 1143328587}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy (Blue Slime)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6185,7 +6252,7 @@ Transform:
   m_GameObject: {fileID: 1221176691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 578464152}
@@ -6232,12 +6299,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 305601576, guid: 371e2aa5cd0a3b54e9e8d61e3414ec06, type: 3}
+  m_Sprite: {fileID: -230085222, guid: 2c0f27c1b20ac67489dc1c901ce0e0f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.24, y: 0.24}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6256,8 +6323,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: -0.11033368}
-  m_Size: {x: 0.78435564, y: 0.78435564}
+  m_Offset: {x: -0.08089002, y: -0.057224672}
+  m_Size: {x: 0.50445557, y: 0.80404586}
   m_Direction: 0
 --- !u!61 &1221176695
 BoxCollider2D:
@@ -6272,18 +6339,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.14677477}
+  m_Offset: {x: -0.08357493, y: 0.16356248}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.24, y: 0.24}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.70490444, y: 0.5806489}
+  m_Size: {x: 0.4555562, y: 0.61422443}
   m_EdgeRadius: 0
 --- !u!95 &1221176696
 Animator:
@@ -7592,7 +7659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430154982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.498, z: 0}
+  m_LocalPosition: {x: 0, y: -0.611, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10410,8 +10477,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0.755, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.7, y: 0.3}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -33, y: -1}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062372089
 MonoBehaviour:
@@ -10433,7 +10500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 305601576, guid: 371e2aa5cd0a3b54e9e8d61e3414ec06, type: 3}
+  m_Sprite: {fileID: -915498451, guid: c63a8d921180b0646a97563058bbd9c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

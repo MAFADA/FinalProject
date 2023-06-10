@@ -160,6 +160,9 @@ public class EnemyPatrolAI : MonoBehaviour
 
     private void MoveInDirection(int _direction)
     {
+        if (enemy == null)
+            return;
+
         idleTimer = 0;
         animator.SetBool("isRunning", true);
 
