@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MidBossRun : StateMachineBehaviour
 {
-    public float speed = 2.5f;
-    public float attackRange = 3f;
+    [SerializeField] float speed = 2.5f;
+    [SerializeField] float attackRange = 3f;
     Transform player;
     Rigidbody2D rb;
     MidBoss midBoss;

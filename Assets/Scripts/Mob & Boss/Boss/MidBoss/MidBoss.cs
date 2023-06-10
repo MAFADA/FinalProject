@@ -10,9 +10,14 @@ public class MidBoss : MonoBehaviour
     [SerializeField] TMP_Text midBossNameText;
     [SerializeField] Transform player;
     [SerializeField] bool isFlipped;
+
+    [Header("UI")]
     [SerializeField] float health;
     [SerializeField] Image hpBar;
     [SerializeField] float maxHealth = 1000;
+
+  
+    private Rigidbody2D rb;
 
     private void Awake()
     {

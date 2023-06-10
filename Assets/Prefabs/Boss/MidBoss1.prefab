@@ -275,9 +275,6 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 8
-  jumpForce: 10
-  cooldownTime: 3
-  jumpAttackRange: 5
 --- !u!95 &5072307521676843720
 Animator:
   serializedVersion: 5
