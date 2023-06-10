@@ -12,28 +12,28 @@ public class MidBoss : MonoBehaviour
     [SerializeField] bool isFlipped;
 
     [Header("UI")]
-    [SerializeField] float health;
+    EnemyHealth health;
     [SerializeField] Image hpBar;
-    [SerializeField] float maxHealth = 1000;
 
-  
+
     private Rigidbody2D rb;
 
     private void Awake()
     {
-        hpBar.fillAmount = (float)health / (float)maxHealth;
+        health = GetComponent<EnemyHealth>();
+        hpBar.fillAmount = (float)health.CurrentHealth / (float)health.MaxHealth;
         midBossNameText.text = midBossName;
     }
 
     private void Update()
     {
-        hpBar.fillAmount = (float)health / (float)maxHealth;
+        hpBar.fillAmount = health.CurrentHealth / health.MaxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        health -= damage;
-        hpBar.fillAmount = (float)health / (float)maxHealth;
+        health.CurrentHealth -= damage;
+        hpBar.fillAmount = health.CurrentHealth / health.MaxHealth;
     }
 
 

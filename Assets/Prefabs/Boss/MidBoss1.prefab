@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5286678774738899847}
   - component: {fileID: 6048457553487782826}
   - component: {fileID: 8304461844108861703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,12 +147,13 @@ GameObject:
   - component: {fileID: 5072307521676843717}
   - component: {fileID: 5072307521676843716}
   - component: {fileID: 5072307521676843723}
+  - component: {fileID: 6567955032404541695}
   - component: {fileID: 6291434457230122320}
   - component: {fileID: 5179966667030641881}
   - component: {fileID: 5072307521676843720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MidBoss1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +239,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.05959356, y: -0.41}
   m_Size: {x: 0.7691872, y: 0.79}
   m_Direction: 0
+--- !u!114 &6567955032404541695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072307521676843726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68306c33f2be9e429e4cd34873015c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 1000
 --- !u!114 &6291434457230122320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5072307521764782679}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +354,7 @@ GameObject:
   - component: {fileID: 5072307521777848523}
   - component: {fileID: 5072307521777848522}
   - component: {fileID: 5072307521777848521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MidBossCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +455,7 @@ GameObject:
   - component: {fileID: 5072307521954234137}
   - component: {fileID: 5072307521954234139}
   - component: {fileID: 5072307521954234138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5072307522097965436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5072307522656691436}
   - component: {fileID: 5072307522656691437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class ExplosiveMob : MonoBehaviour
 {
     [SerializeField] float health = 100f;
+    private EnemyHealth hp;
+    private Rigidbody2D rb;
     public UnityEvent<GameObject> OnHit = new UnityEvent<GameObject>();
 
 

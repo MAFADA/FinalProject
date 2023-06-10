@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private Image healthBar;
 
-    [SerializeField] private TMP_Text damageText;
+    // [SerializeField] private TMP_Text damageText;
 
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
     public int MaxHealth { get => maxHealth; }
@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;
 
-        damageText.text = Convert.ToString(amount);
+        // damageText.text = Convert.ToString(amount);
 
         if (currentHealth <= 0)
         {

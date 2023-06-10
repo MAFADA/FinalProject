@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExplosiveEnemy : MonoBehaviour
 {
     [SerializeField] float explosionRadius = 3f;
-    [SerializeField] int damageAmount = 1;
+    [SerializeField] int damageAmount = 20;
     // [SerializeField] GameObject explosionEffect;
     [SerializeField] Animator animator;
 
@@ -15,13 +15,17 @@ public class ExplosiveEnemy : MonoBehaviour
     {
         if (!exploded && collision.CompareTag("Player"))
         {
-            Explode();
-            PlayerHealthBossArena player = collision.GetComponent<PlayerHealthBossArena>();
+            PlayerHealth player = collision.GetComponent<PlayerHealth>();
             if (player != null)
             {
                 player.TakeDamage(damageAmount);
+                Explode();
             }
         }
+    }
+
+    private void Start() {
+        
     }
 
     private void Explode()

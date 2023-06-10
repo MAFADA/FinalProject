@@ -56,6 +56,10 @@ public class EnemyPatrolAI : MonoBehaviour
     {
         if (seeker.IsDone())
         {
+            if (seeker == null || transform == null)
+            {
+                return;
+            }
             //Draw the path
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }

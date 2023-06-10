@@ -5,7 +5,7 @@ using UnityEngine;
 public class MidBossMeleeAttack : MonoBehaviour
 {
     [Header("Melee Attack")]
-    [SerializeField] float attackDamage = 10;
+    [SerializeField] int attackDamage = 20;
     [SerializeField] Vector3 attackOffset;
     [SerializeField] float attackRange = 1f;
     [SerializeField] LayerMask attackMask;
@@ -15,6 +15,7 @@ public class MidBossMeleeAttack : MonoBehaviour
     private bool isJumping = false;
     private float cooldownTimer = 0f;
     private Collider2D colInfo;
+    private Vector2 pos;
 
     private void Awake()
     {
@@ -22,20 +23,30 @@ public class MidBossMeleeAttack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void Start()
+    {
+
+    }
+
     public void Attack()
     {
-        Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x;
-        pos += transform.up * attackOffset.y;
+        pos = transform.position;
+        // pos += transform.right * attackOffset.x;
+        // pos += transform.up * attackOffset.y;
 
-        colInfo = Physics2D.OverlapCircle(point: pos, attackRange, attackMask);
+        colInfo = Physics2D.OverlapCircle(point: this.transform.position, attackRange, attackMask);
         if (colInfo != null)
         {
-            var collider = colInfo.GetComponent<PlayerHealthBossArena>();
-            collider.TakeDamage(attackDamage);
+            var collider = colInfo.GetComponent<PlayerHealth>();
+            collider.TakeDamage(amount: attackDamage);
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(center: this.transform.position,attackRange);
+    }
 
 
 }
