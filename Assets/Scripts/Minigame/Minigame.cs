@@ -179,22 +179,22 @@ public class Minigame : MonoBehaviour
 
     }
 
-    // void OnEnable()
-    // {
-    //     if (unAnsweredQuestionsList == null || unAnsweredQuestionsList.Count == 0 || unAnsweredFalseQuestionsList == null || unAnsweredFalseQuestionsList.Count == 0)
-    //     {
-    //         unAnsweredQuestionsList = questions.ToList<Question>();
-    //         unAnsweredFalseQuestionsList = falseQuestion.ToList<Question>();
-    //     }
+    void OnEnable()
+    {
+        if (unAnsweredQuestionsList == null || unAnsweredQuestionsList.Count == 0 || unAnsweredFalseQuestionsList == null || unAnsweredFalseQuestionsList.Count == 0)
+        {
+            unAnsweredQuestionsList = questions.ToList<Question>();
+            unAnsweredFalseQuestionsList = falseQuestion.ToList<Question>();
+        }
 
-    //     SetCurrentQuestion();
+        SetCurrentQuestion();
 
-    // }
+    }
 
-    // private void OnDisable()
-    // {
-    //     SetCurrentQuestion();
-    // }
+    private void OnDisable()
+    {
+        SetCurrentQuestion();
+    }
 
     public void OnClicked(Button button)
     {

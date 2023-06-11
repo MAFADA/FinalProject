@@ -191,7 +191,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -631,6 +631,12 @@ PlayableDirector:
     value: {fileID: 1871139095}
   - key: {fileID: -651582594090687701, guid: 8bd0129916402fa45874949414bac9fc, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -5153797142710269453, guid: 8bd0129916402fa45874949414bac9fc, type: 2}
+    value: {fileID: 2051274745}
+  - key: {fileID: -982518444743800802, guid: 8bd0129916402fa45874949414bac9fc, type: 2}
+    value: {fileID: 24034871}
+  - key: {fileID: 845835477972293039, guid: 8bd0129916402fa45874949414bac9fc, type: 2}
+    value: {fileID: 1871139095}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1851156391
@@ -908,5 +914,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutSceneController
       objectReference: {fileID: 0}
+    - target: {fileID: 8232214155304460076, guid: 8bda6126b34d67d4580f3330ac96b740, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bda6126b34d67d4580f3330ac96b740, type: 3}
+--- !u!1 &2051274745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8232214155304460076, guid: 8bda6126b34d67d4580f3330ac96b740, type: 3}
+  m_PrefabInstance: {fileID: 2051274744}
+  m_PrefabAsset: {fileID: 0}
