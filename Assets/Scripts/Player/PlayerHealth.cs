@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Image healthBar;
 
     // [SerializeField] private TMP_Text damageText;
+    public UnityEvent OnPlayerDie;
 
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
     public int MaxHealth { get => maxHealth; }
@@ -41,7 +43,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            OnPlayerDie.Invoke();
         }
     }
 }

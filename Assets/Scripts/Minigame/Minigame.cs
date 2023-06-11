@@ -70,6 +70,7 @@ public class Minigame : MonoBehaviour
         PhaseWin
     }
 
+
     private void Update()
     {
         switch (stateFirewall1)
@@ -81,6 +82,7 @@ public class Minigame : MonoBehaviour
                 break;
 
             case StateFirewall1.Phase1:
+        
                 if (firewall1AnsweredQuestionCount == 1)
                 {
                     stateFirewall1 = StateFirewall1.Phase2;
@@ -163,40 +165,42 @@ public class Minigame : MonoBehaviour
             case StateFirewall3.Phase3:
                 if (firewall3AnsweredQuestionCount == 3)
                 {
-                Debug.Log(firewall3AnsweredQuestionCount);
-                firewall[2].GetComponent<FirewallHealth>().enabled = false;
-                firewallButton[2].gameObject.SetActive(false);
-                // stateFirewall3 = StateFirewall3.PhaseWin;
+                    firewall[2].GetComponent<FirewallHealth>().enabled = false;
+                    firewallButton[2].gameObject.SetActive(false);
                 }
                 break;
 
         }
 
-        if (firewall1AnsweredQuestionCount == 3&& firewall2AnsweredQuestionCount==3&& firewall3AnsweredQuestionCount==3)
+        if (firewall1AnsweredQuestionCount == 3 && firewall2AnsweredQuestionCount == 3 && firewall3AnsweredQuestionCount == 3)
         {
             PlayerWin();
         }
+
     }
 
-    void OnEnable()
-    {
-        if (unAnsweredQuestionsList == null || unAnsweredQuestionsList.Count == 0 || unAnsweredFalseQuestionsList == null || unAnsweredFalseQuestionsList.Count == 0)
-        {
-            unAnsweredQuestionsList = questions.ToList<Question>();
-            unAnsweredFalseQuestionsList = falseQuestion.ToList<Question>();
-        }
+    // void OnEnable()
+    // {
+    //     if (unAnsweredQuestionsList == null || unAnsweredQuestionsList.Count == 0 || unAnsweredFalseQuestionsList == null || unAnsweredFalseQuestionsList.Count == 0)
+    //     {
+    //         unAnsweredQuestionsList = questions.ToList<Question>();
+    //         unAnsweredFalseQuestionsList = falseQuestion.ToList<Question>();
+    //     }
 
-        SetCurrentQuestion();
-    }
+    //     SetCurrentQuestion();
 
-    private void OnDisable()
-    {
-        SetCurrentQuestion();
-    }
+    // }
+
+    // private void OnDisable()
+    // {
+    //     SetCurrentQuestion();
+    // }
 
     public void OnClicked(Button button)
     {
         buttonName = button.name;
+        // gameObject.GetComponent<Minigame>().enabled = true;
+        
     }
 
     void SetCurrentQuestion()
@@ -216,21 +220,21 @@ public class Minigame : MonoBehaviour
     IEnumerator TransitionToNextQuestion()
     {
 
-        questionCanvas.gameObject.SetActive(false);
         unAnsweredQuestionsList.Remove(currentQuestion);
         unAnsweredFalseQuestionsList.Remove(currentFalseQuestion);
+        questionCanvas.gameObject.SetActive(false);
+        SetCurrentQuestion();
         // this.gameObject.SetActive(false);
+        // gameObject.GetComponent<Minigame>().enabled = false;
 
         yield return new WaitForSeconds(.1f);
-
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void UserSelectTrue()
     {
         if (currentQuestion.isTrue)
         {
-            Debug.Log("Correct!");
+            // Debug.Log("Correct!");
             string buttonClicked = buttonName;
 
             switch (buttonClicked)
@@ -267,16 +271,15 @@ public class Minigame : MonoBehaviour
     {
         finishedCanvas.gameObject.SetActive(true);
         finishedText.text = "You Win!!!";
-        if (finishedCanvas.isActiveAndEnabled)
-        {
-            Time.timeScale = 0f;
-        }
+        // if (finishedCanvas.isActiveAndEnabled)
+        // {
+        //     Time.timeScale = 0f;
+        // }
     }
 
     public void Retry()
     {
         string name = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex).name;
         SceneManager.LoadScene(name);
-        Time.timeScale = 1f;
     }
 }

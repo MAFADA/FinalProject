@@ -50,10 +50,10 @@ public class ServerHealth : MonoBehaviour
         isGameOver = true;
         finishedCanvas.gameObject.SetActive(true);
         finishedText.text = "Game Over!!!";
-        if (finishedCanvas.isActiveAndEnabled)
-        {
-            Time.timeScale = 0f;
-        }
+        // if (finishedCanvas.isActiveAndEnabled)
+        // {
+        //     Time.timeScale = 0f;
+        // }
     }
 
   

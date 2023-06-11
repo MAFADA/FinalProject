@@ -12,11 +12,8 @@ public class MidBoss : MonoBehaviour
     [SerializeField] bool isFlipped;
 
     [Header("UI")]
-    EnemyHealth health;
+    private EnemyHealth health;
     [SerializeField] Image hpBar;
-
-
-    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -27,13 +24,13 @@ public class MidBoss : MonoBehaviour
 
     private void Update()
     {
-        hpBar.fillAmount = health.CurrentHealth / health.MaxHealth;
+        hpBar.fillAmount = (float)health.CurrentHealth / (float)health.MaxHealth;
     }
 
     public void TakeDamage(int damage)
     {
         health.CurrentHealth -= damage;
-        hpBar.fillAmount = health.CurrentHealth / health.MaxHealth;
+        hpBar.fillAmount = (float)health.CurrentHealth / (float)health.MaxHealth;
     }
 
 

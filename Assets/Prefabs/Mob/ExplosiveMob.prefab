@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6006922252950181320}
   - component: {fileID: 6006922252950181323}
   - component: {fileID: 508747507301150031}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mob Visual
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,9 +127,9 @@ GameObject:
   - component: {fileID: 6006922253100443072}
   - component: {fileID: 8422806812520962281}
   - component: {fileID: 6006922253100443075}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ExplosiveMob
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -23,6 +23,11 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadMainMenuLevel()
+    {
+        StartCoroutine(LoadScene(SceneManager.GetSceneByName("MainMenu").buildIndex));
+    }
+
     IEnumerator LoadScene(int levelIndex)
     {
         transition.SetTrigger("Start");
