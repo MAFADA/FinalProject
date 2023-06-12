@@ -8,6 +8,7 @@ public class ExplosiveEnemy : MonoBehaviour
     [SerializeField] int damageAmount = 20;
     // [SerializeField] GameObject explosionEffect;
     [SerializeField] Animator animator;
+    [SerializeField] float explosionTimer = 3f;
 
     private bool exploded = false;
 
@@ -15,8 +16,9 @@ public class ExplosiveEnemy : MonoBehaviour
     {
         if (!exploded && collision.CompareTag("Player"))
         {
+            explosionTimer -= Time.deltaTime;
             PlayerHealth player = collision.GetComponent<PlayerHealth>();
-            if (player != null)
+            if (player != null && explosionTimer <= 0)
             {
                 player.TakeDamage(damageAmount);
                 Explode();
@@ -24,8 +26,30 @@ public class ExplosiveEnemy : MonoBehaviour
         }
     }
 
-    private void Start() {
-        
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!exploded && collision.CompareTag("Player"))
+        {
+            explosionTimer -= Time.deltaTime;
+            PlayerHealth player = collision.GetComponent<PlayerHealth>();
+            if (player != null && explosionTimer <= 0)
+            {
+                player.TakeDamage(damageAmount);
+                Explode();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Player"))
+        {
+            explosionTimer = 3f;
+        }
+    }
+
+    private void Start()
+    {
+
     }
 
     private void Explode()
