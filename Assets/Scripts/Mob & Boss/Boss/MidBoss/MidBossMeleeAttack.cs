@@ -5,79 +5,46 @@ using UnityEngine;
 public class MidBossMeleeAttack : MonoBehaviour
 {
     [Header("Melee Attack")]
-    [SerializeField] float attackDamage = 10;
-    [SerializeField] Vector3 attackOffset;
-    [SerializeField] float attackRange = 1f;
-    [SerializeField] LayerMask attackMask;
-
-    [Header("Jump Attack")]
-    public float jumpForce = 10f;
-    public float cooldownTime = 3f;
-    public float jumpAttackRange = 5f;
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRange = 0.5f;
+    [SerializeField] LayerMask playerLayers;
+    [SerializeField] int attackDamage = 40;
 
     private Rigidbody2D rb;
-    private GameObject player;
-    private bool isJumping = false;
-    private float cooldownTimer = 0f;
-    private Collider2D colInfo;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Update()
+    private void Start()
     {
-        if (isJumping) return;
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-
-        if (distanceToPlayer <= attackRange)
-        {
-            cooldownTimer -= Time.deltaTime;
-
-            if (cooldownTimer <= 0f)
-            {
-                Jump();
-                cooldownTimer = cooldownTime;
-            }
-        }
-    }
-
-    public void Jump()
-    {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        isJumping = true;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-        }
     }
 
     public void Attack()
     {
-        Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x;
-        pos += transform.up * attackOffset.y;
 
-        colInfo = Physics2D.OverlapCircle(point: pos, attackRange, attackMask);
-        if (colInfo != null)
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+        foreach (Collider2D enemy in hitEnemies)
         {
-            var collider = colInfo.GetComponent<PlayerHealthBossArena>();
-            collider.TakeDamage(attackDamage);
+            if (enemy.GetComponent<PlayerHealth>() == null)
+            {
+                return;
+            }
+
+            // Debug.Log("Enemy Hit");
+            enemy.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
         }
     }
 
-
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        // Gizmos.DrawWireSphere(transform.position, attackRange);      
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
 
 }

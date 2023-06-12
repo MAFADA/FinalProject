@@ -20,20 +20,19 @@ public class EnemyPatrolAI : MonoBehaviour
 
 
     [Header("AI Movement")]
-    private float distanceToPlayer;
     [SerializeField] Transform target;
     [SerializeField] float speed = 200f;
     [SerializeField] float nextWaypointDistance = 3f;
     [SerializeField] Transform enemyVisual;
     [SerializeField] float detectionArea;
-
-    [SerializeField] private Animator animator;
-
     private Path path;
     private int currentWaypoint = 0;
     private bool endOfPath = false;
+    // [SerializeField] private Animator animator;
+
     private Seeker seeker;
     private Rigidbody2D rb;
+    private float distanceToPlayer;
     public AIState aiState;
 
     public enum AIState
@@ -42,18 +41,12 @@ public class EnemyPatrolAI : MonoBehaviour
         Chase,
     }
 
-
-    private void Awake()
-    {
-        initScale = enemy.localScale;
-    }
-
-
     void Start()
     {
         // seeker for pathfinding
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        initScale = enemy.localScale;
 
         // repeat calling function UpdatePath
         InvokeRepeating(methodName: "UpdatePath", 0f, 0.5f);
@@ -63,6 +56,10 @@ public class EnemyPatrolAI : MonoBehaviour
     {
         if (seeker.IsDone())
         {
+            if (seeker == null || transform == null)
+            {
+                return;
+            }
             //Draw the path
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
@@ -112,6 +109,15 @@ public class EnemyPatrolAI : MonoBehaviour
                     }
                 }
 
+                if (distanceToPlayer <= detectionArea)
+                {
+                    aiState = AIState.Chase;
+                }
+
+                break;
+
+            case AIState.Chase:
+
                 if (path == null)
                 {
                     return;
@@ -127,23 +133,6 @@ public class EnemyPatrolAI : MonoBehaviour
                     endOfPath = false;
                 }
 
-                if (distanceToPlayer <= detectionArea)
-                {
-                    aiState = AIState.Chase;
-                }
-
-                break;
-
-            case AIState.Chase:
-
-                // jarak rigidbody terhadap satu point dalam waypoint 
-                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-                if (distance < nextWaypointDistance)
-                {
-                    currentWaypoint++;
-                }
-                //Calculating the waypoint to target
                 Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
                 Vector2 force = direction * speed * Time.deltaTime;
 
@@ -153,11 +142,20 @@ public class EnemyPatrolAI : MonoBehaviour
                     rb.AddForce(force);
                 }
 
-                if (rb.velocity.x >= 0.01f)
+                // jarak rigidbody terhadap satu point dalam waypoint 
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+                if (distance < nextWaypointDistance)
+                {
+                    currentWaypoint++;
+                }
+
+
+                if (force.x >= 0.01f)
                 {
                     enemyVisual.localScale = new Vector3(-1f, 1f, 1f);
                 }
-                else if (rb.velocity.x <= -0.01f)
+                else if (force.x <= -0.01f)
                 {
                     enemyVisual.localScale = new Vector3(1f, 1f, 1f);
                 }
@@ -168,8 +166,6 @@ public class EnemyPatrolAI : MonoBehaviour
                     aiState = AIState.Patrol;
                 }
                 break;
-
-
         }
 
     }
@@ -188,6 +184,11 @@ public class EnemyPatrolAI : MonoBehaviour
 
     private void MoveInDirection(int _direction)
     {
+        if (target == null)
+        {
+            return;
+        }
+        
         idleTimer = 0;
         // animator.SetBool("isRunning", true);
 
