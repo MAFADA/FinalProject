@@ -15,7 +15,7 @@ public class MidBossMeleeAttack : MonoBehaviour
     private bool isJumping = false;
     private float cooldownTimer = 0f;
     private Collider2D colInfo;
-    private Vector2 pos;
+    private Vector3 pos;
 
     private void Awake()
     {
@@ -31,10 +31,10 @@ public class MidBossMeleeAttack : MonoBehaviour
     public void Attack()
     {
         pos = transform.position;
-        // pos += transform.right * attackOffset.x;
-        // pos += transform.up * attackOffset.y;
+        pos += transform.right * attackOffset.x;
+        pos += transform.up * attackOffset.y;
 
-        colInfo = Physics2D.OverlapCircle(point: this.transform.position, attackRange, attackMask);
+        colInfo = Physics2D.OverlapCircle(point: pos, attackRange, attackMask);
         if (colInfo != null)
         {
             var collider = colInfo.GetComponent<PlayerHealth>();

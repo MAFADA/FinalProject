@@ -15,11 +15,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Player Combat");
-
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("V");
             Attack();
         }
     }
@@ -37,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Enemy Hit");
+            // Debug.Log("Enemy Hit");
             enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
         }
     }

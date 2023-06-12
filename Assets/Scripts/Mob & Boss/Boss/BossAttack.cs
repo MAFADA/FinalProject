@@ -10,11 +10,6 @@ public class BossAttack : MonoBehaviour
     [SerializeField] float attackRange = 1f;
     [SerializeField] LayerMask attackMask;
 
-    // [Header("Jump Attack")]
-    // public float jumpForce = 10f;
-    // public float cooldownTime = 3f;
-    // public float jumpAttackRange = 5f;
-
     private Rigidbody2D rb;
     private GameObject player;
     private bool isJumping = false;
@@ -26,38 +21,6 @@ public class BossAttack : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    private void Update()
-    {
-        // if (isJumping) return;
-
-        // float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-
-        // if (distanceToPlayer <= attackRange)
-        // {
-        //     cooldownTimer -= Time.deltaTime;
-
-        //     if (cooldownTimer <= 0f)
-        //     {
-        //         Jump();
-        //         cooldownTimer = cooldownTime;
-        //     }
-        // }
-    }
-
-    // public void Jump()
-    // {
-    //     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-    //     isJumping = true;
-    // }
-
-    // private void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Ground"))
-    //     {
-    //         isJumping = false;
-    //     }
-    // }
 
     public void Attack()
     {
