@@ -14967,6 +14967,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2945610493053151630, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338595804232428040, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4338595804232428040, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
       propertyPath: OnEnemyDie.m_PersistentCalls.m_Calls.Array.data[8].m_Mode
       value: 6
@@ -15005,7 +15013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5072307521676843727, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.12504496
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5072307521676843727, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15034,6 +15042,10 @@ PrefabInstance:
     - target: {fileID: 5072307521676843727, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072307521777848520, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8060441344908259094, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
       propertyPath: player
