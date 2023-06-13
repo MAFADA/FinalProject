@@ -10011,7 +10011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7910427459350381250, guid: 042170acc76a5004cb2029afb3036b4c, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7910427459350381250, guid: 042170acc76a5004cb2029afb3036b4c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10389,7 +10389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3007874829929499014, guid: 0906f7214b1ac794aa2ef0adf92ab2aa, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3007874829929499014, guid: 0906f7214b1ac794aa2ef0adf92ab2aa, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11596,37 +11596,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 258926713}
     - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
+      propertyPath: titleTextGameOver
+      value: 
+      objectReference: {fileID: 933062773}
     - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
       propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 224042768}
-    - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
-      propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1977508182910604003, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
       propertyPath: enemyLayers.m_Bits
       value: 512
@@ -11998,6 +11974,17 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &933062773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3417164511446124601, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+  m_PrefabInstance: {fileID: 3417164512087737795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &944065518
 GameObject:
   m_ObjectHideFlags: 0
@@ -12721,7 +12708,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6724016874976826241, guid: e6360af08b1a2c0418a51bfe98227add, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6724016874976826241, guid: e6360af08b1a2c0418a51bfe98227add, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12901,7 +12888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3417164511417593657, guid: e97b2ff3301563949b0608999a595b03, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3417164511417593657, guid: e97b2ff3301563949b0608999a595b03, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13486,6 +13473,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 904251568}
     m_Modifications:
     - target: {fileID: 8040518022637932768, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 933062773}
+    - target: {fileID: 8040518022637932768, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
       propertyPath: OnFall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 224042768}
@@ -13498,9 +13489,17 @@ PrefabInstance:
       value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: 8040518023035672991, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 933062773}
+    - target: {fileID: 8040518023035672991, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
       propertyPath: OnFall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 224042768}
+    - target: {fileID: 8040518024057364093, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 933062773}
     - target: {fileID: 8040518024057364093, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
       propertyPath: OnFall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13553,6 +13552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fall
       objectReference: {fileID: 0}
+    - target: {fileID: 8040518024520541865, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 933062773}
     - target: {fileID: 8040518024520541865, guid: 0f6f013be4dfba445ad13068f477b88a, type: 3}
       propertyPath: OnFall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

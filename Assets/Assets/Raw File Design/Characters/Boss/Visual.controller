@@ -295,4 +295,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  attackRange: 0.5
+  attackRange: 1
