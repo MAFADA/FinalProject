@@ -6,6 +6,7 @@ public class MidBossRun : StateMachineBehaviour
 {
     [SerializeField] float speed = 2.5f;
     [SerializeField] float attackRange = 3f;
+    [SerializeField] float attackIdle = 3f;
     Transform player;
     Rigidbody2D rb;
     MidBoss midBoss;
@@ -28,7 +29,11 @@ public class MidBossRun : StateMachineBehaviour
 
         if (Vector2.Distance(player.position, rb.position) <= attackRange)
         {
-            animator.SetTrigger("Attack");
+            attackIdle -= Time.deltaTime;
+            if (attackIdle <= 0)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
     }
 

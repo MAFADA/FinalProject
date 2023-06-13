@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  attackRange: 3
+  attackRange: 0.5
+  attackIdle: 2
 --- !u!1102 &-2067363238893086391
 AnimatorState:
   serializedVersion: 6

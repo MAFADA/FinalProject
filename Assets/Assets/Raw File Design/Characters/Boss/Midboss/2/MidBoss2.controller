@@ -252,12 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  attackRange: 3
-  jumpForce: 8.55
-  jumpDetectionDistance: 5
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 64
+  attackRange: 2
+  attackIdle: 0
 --- !u!1102 &7855033136882965860
 AnimatorState:
   serializedVersion: 6

@@ -196,7 +196,7 @@ MonoBehaviour:
   speedPatrol: 5
   idleDuration: 1
   target: {fileID: 0}
-  speed: 400
+  speed: 1000
   nextWaypointDistance: 3
   enemyVisual: {fileID: 6006922253100443079}
   detectionArea: 10
@@ -293,6 +293,7 @@ MonoBehaviour:
   explosionRadius: 3
   damageAmount: 20
   animator: {fileID: 6006922253100443075}
+  explosionTimer: 3
 --- !u!50 &6006922253100443072
 Rigidbody2D:
   serializedVersion: 4
