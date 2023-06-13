@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistObject : MonoBehaviour
 {
-    private static PersistObject instance;
+    [SerializeField] private GameObject inventory;
 
     private void Awake()
     {
-        if (instance == null)
+        DontDestroyOnLoad(inventory);
+    }
+
+    private void Update() {
+        Scene scene = SceneManager.GetActiveScene();
+        
+        if (scene.name == "CutsceneBossIntro")
         {
-            // Jika instance masih null, tetapkan instance saat ini ke instance pertama
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            // Jika instance sudah ada, hancurkan gameObject saat ini
-            Destroy(gameObject);
-        }
+            Destroy(inventory);
+        } 
     }
 }
