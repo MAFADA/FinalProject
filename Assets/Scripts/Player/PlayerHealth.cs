@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Image healthBar;
 
     [SerializeField] TMP_Text titleTextGameOver;
+    public UnityEvent OnPlayerHit;
 
 
     // [SerializeField] private TMP_Text damageText;
@@ -40,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        OnPlayerHit.Invoke();
         currentHealth -= amount;
 
         // damageText.text = Convert.ToString(amount);

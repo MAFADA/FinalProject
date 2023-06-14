@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossAttack : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class BossAttack : MonoBehaviour
     private bool isJumping = false;
     private float cooldownTimer = 0f;
     private Collider2D colInfo;
+    public UnityEvent OnBossAttack;
+
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class BossAttack : MonoBehaviour
 
     public void Attack()
     {
+        OnBossAttack.Invoke();
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;

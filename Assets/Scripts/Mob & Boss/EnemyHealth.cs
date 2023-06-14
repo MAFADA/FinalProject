@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public int MaxHealth { get => maxHealth; }
 
     public UnityEvent OnEnemyDie;
+    public UnityEvent OnEnemyHit;
 
     private void InitVariables()
     {
@@ -24,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        OnEnemyHit.Invoke();
         currentHealth -= amount;
         if (currentHealth <= 0)
         {

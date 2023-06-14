@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BossRun : StateMachineBehaviour
 {
-    public float speed = 2.5f;
-    public float attackRange = 3f;
+    [SerializeField] float speed = 2.5f;
+    [SerializeField] float attackRange = 3f;
+    [SerializeField] float attackIdle = 2f;
+
     Transform player;
     Rigidbody2D rb;
     Boss boss;
@@ -28,7 +30,11 @@ public class BossRun : StateMachineBehaviour
 
         if (Vector2.Distance(player.position, rb.position) <= attackRange)
         {
-            animator.SetTrigger("Attack");
+            attackIdle -= Time.deltaTime;
+            if (attackIdle <= 0)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
     }
 

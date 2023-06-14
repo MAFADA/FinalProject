@@ -417,6 +417,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnemyHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8060441344908259094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +454,10 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 8
-  attackDamage: 10
+  attackDamage: 15
+  OnMidBossAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5072307521764782678
 GameObject:
   m_ObjectHideFlags: 0
