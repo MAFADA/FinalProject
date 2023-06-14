@@ -14440,6 +14440,10 @@ PrefabInstance:
       value: TurretMob
       objectReference: {fileID: 0}
     - target: {fileID: 2577710196103898854, guid: 8287c8744b0722e409028222087d065c, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2062240851}
+    - target: {fileID: 2577710196103898854, guid: 8287c8744b0722e409028222087d065c, type: 3}
       propertyPath: leftEdge
       value: 
       objectReference: {fileID: 1795445446}

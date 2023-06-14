@@ -199,7 +199,7 @@ MonoBehaviour:
   speed: 1500
   nextWaypointDistance: 3
   enemyVisual: {fileID: 6006922253100443079}
-  detectionArea: 10
+  detectionArea: 7
   aiState: 0
 --- !u!114 &6194353658331924284
 MonoBehaviour:
@@ -369,7 +369,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!95 &6006922253100443075
 Animator:
