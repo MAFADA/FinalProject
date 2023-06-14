@@ -15324,6 +15324,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5072307521777848522, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072307521777848522, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072307521777848522, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072307521777848522, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072307521954234136, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8060441344908259094, guid: 3ea6b7461aaedc440b02d306a0211bf1, type: 3}
       propertyPath: player
       value: 
@@ -17721,7 +17741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
       propertyPath: OnPlayerDie.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SetMute
+      value: GameOverPanel
       objectReference: {fileID: 0}
     - target: {fileID: 1977508182910604001, guid: 94b3a7ba201094546a1f8ebd80848587, type: 3}
       propertyPath: OnPlayerHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

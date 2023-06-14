@@ -270,7 +270,7 @@ public class Minigame : MonoBehaviour
     public void PlayerWin()
     {
         finishedCanvas.gameObject.SetActive(true);
-        finishedText.text = "You Win!!!";
+        finishedText.text = "Selamat!!! kamu telah berhasil melindungi semua data yang ada di server dari serangan virus hacker Zenon.";
         // if (finishedCanvas.isActiveAndEnabled)
         // {
         //     Time.timeScale = 0f;
