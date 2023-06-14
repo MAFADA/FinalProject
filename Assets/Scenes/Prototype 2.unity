@@ -12959,6 +12959,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2963683556598413853, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1731094569}
+    - target: {fileID: 2963683556598413853, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMute
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963683556980218512, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1731094569}
+    - target: {fileID: 2963683556980218512, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSfxVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963683557425921542, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1731094569}
+    - target: {fileID: 2963683557643910126, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1731094569}
+    - target: {fileID: 2963683557643910126, guid: e97b2ff3301563949b0608999a595b03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetBgmVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 3417164511417593653, guid: e97b2ff3301563949b0608999a595b03, type: 3}
       propertyPath: m_Name
       value: GameplayCanvas
