@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class FirewallHealth : MonoBehaviour
@@ -9,6 +10,7 @@ public class FirewallHealth : MonoBehaviour
 
     [SerializeField] float counterAtk = 30f;
     [SerializeField] Image healthBar;
+    public UnityEvent OnFirewallHit;
 
     private void Start()
     {
@@ -42,6 +44,7 @@ public class FirewallHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        OnFirewallHit.Invoke();
         health -= damage;
         healthBar.fillAmount = health / 100;
     }
