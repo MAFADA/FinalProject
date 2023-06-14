@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExplosiveEnemy : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ExplosiveEnemy : MonoBehaviour
     // [SerializeField] GameObject explosionEffect;
     [SerializeField] Animator animator;
     [SerializeField] float explosionTimer = 3f;
-
+    public UnityEvent OnExplosion;
     private bool exploded = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +56,7 @@ public class ExplosiveEnemy : MonoBehaviour
     private void Explode()
     {
         exploded = true;
-
+        OnExplosion.Invoke();
         animator.SetTrigger("Explode");
 
         // Spawn explosion effect

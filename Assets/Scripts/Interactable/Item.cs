@@ -13,6 +13,7 @@ public class Item : ScriptableObject
     [Header("Both")]
     [SerializeField] public Sprite image;
     [SerializeField] public string itemName;
+    [TextArea(15,20)]
     [SerializeField] public string itemDescription;
 }
 

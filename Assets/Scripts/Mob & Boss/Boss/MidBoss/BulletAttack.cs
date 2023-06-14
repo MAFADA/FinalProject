@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BulletAttack : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class BulletAttack : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     // private Collider2D colInfo;
+    public UnityEvent OnShoot;
+
 
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class BulletAttack : MonoBehaviour
 
     private void Shoot()
     {
+        OnShoot.Invoke();
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 

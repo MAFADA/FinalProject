@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] Animator transition;
     [SerializeField] float transitionTime = 1f;
+    public UnityEvent OnEscKeyDown;
 
     public void StartGame()
     {
         LoadNextScene();
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            OnEscKeyDown.Invoke();
+        }
     }
 
     public void LoadAlexStageLevel()
@@ -25,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadMainMenuLevel()
     {
-        StartCoroutine(LoadScene(SceneManager.GetSceneByName("MainMenu").buildIndex));
+        SceneManager.LoadScene("MainMenu");
     }
 
     IEnumerator LoadScene(int levelIndex)

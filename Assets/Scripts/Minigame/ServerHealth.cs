@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ServerHealth : MonoBehaviour
@@ -11,6 +12,7 @@ public class ServerHealth : MonoBehaviour
     [SerializeField] Image healhtBar;
     [SerializeField] Canvas finishedCanvas;
     [SerializeField] TMP_Text finishedText;
+    public UnityEvent OnServerHit;
 
     private bool isGameOver;
 
@@ -33,6 +35,7 @@ public class ServerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        OnServerHit.Invoke();
         health -= damage;
         healhtBar.fillAmount = health / 100;
     }

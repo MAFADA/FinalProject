@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MidBossMeleeAttack : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MidBossMeleeAttack : MonoBehaviour
     [SerializeField] int attackDamage = 40;
 
     private Rigidbody2D rb;
+    public UnityEvent OnMidBossAttack;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class MidBossMeleeAttack : MonoBehaviour
 
     public void Attack()
     {
-
+        OnMidBossAttack.Invoke();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
