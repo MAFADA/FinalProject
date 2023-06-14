@@ -6,37 +6,33 @@ using UnityEngine.Events;
 public class BossAttack : MonoBehaviour
 {
     [Header("Melee Attack")]
-    [SerializeField] float attackDamage = 10;
-    [SerializeField] Vector3 attackOffset;
-    [SerializeField] float attackRange = 1f;
-    [SerializeField] LayerMask attackMask;
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRange = 0.5f;
+    [SerializeField] LayerMask playerLayers;
+    [SerializeField] int attackDamage = 40;
 
     private Rigidbody2D rb;
-    private GameObject player;
-    private bool isJumping = false;
-    private float cooldownTimer = 0f;
-    private Collider2D colInfo;
     public UnityEvent OnBossAttack;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void Attack()
     {
         OnBossAttack.Invoke();
-        Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x;
-        pos += transform.up * attackOffset.y;
-
-        colInfo = Physics2D.OverlapCircle(point: pos, attackRange, attackMask);
-        if (colInfo != null)
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+        foreach (Collider2D enemy in hitEnemies)
         {
-            var collider = colInfo.GetComponent<PlayerHealth>();
-            collider.TakeDamage((int)attackDamage);
+            if (enemy.GetComponent<PlayerHealth>() == null)
+            {
+                return;
+            }
+
+            // Debug.Log("Enemy Hit");
+            enemy.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
         }
     }
 
@@ -44,7 +40,7 @@ public class BossAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        // Gizmos.DrawWireSphere(transform.position, attackRange);      
+        Gizmos.DrawWireSphere(attackPoint.transform.position, attackRange);      
     }
 
 }

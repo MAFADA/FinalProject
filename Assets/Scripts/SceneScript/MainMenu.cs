@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadMainMenuLevel()
     {
-        StartCoroutine(LoadScene(SceneManager.GetSceneByName("MainMenu").buildIndex));
+        SceneManager.LoadScene("MainMenu");
     }
 
     IEnumerator LoadScene(int levelIndex)

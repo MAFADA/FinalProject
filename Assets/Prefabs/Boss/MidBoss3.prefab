@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 2945610493053151630}
-  attackRange: 0.5
+  attackRange: 0.4
   playerLayers:
     serializedVersion: 2
     m_Bits: 8

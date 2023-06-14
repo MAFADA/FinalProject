@@ -13354,6 +13354,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5179966667030641881, guid: 6f5c9d3ec4fab4d4296427c61c28ac8f, type: 3}
+      propertyPath: attackRange
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179966667030641881, guid: 6f5c9d3ec4fab4d4296427c61c28ac8f, type: 3}
       propertyPath: OnMidBossAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1012454759}
